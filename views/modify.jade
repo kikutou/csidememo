@@ -1,0 +1,332 @@
+//
+   Created by mamol on 16/07/27.
+doctype
+html
+    head
+        title 要件詳細
+        meta(charset='UTF-8')
+        script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+        script(type='text/javascript' src='/javascripts/modify.js')
+
+    body
+        div.box(align='center')
+            div.table
+                if info != null
+                    table#show(style='width: 25%')
+                        tr
+                            th(colspan='2' style='text-align: center')=info.key
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 要件
+                            td=info.title
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 分類
+                            td=info.classification
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 状態
+                            td=info.status
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 種別
+                            td=info.species
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 提出者
+                            td=info.submitter
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 詳細
+                            td=info.detail
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 担当者
+                            td=info.principal
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 備考
+                            td=info.remark
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            td
+                            td
+                                span(style='float: right')
+                                    button#modify 修正
+                                    a(href='/view')
+                                        button(type='button') 戻る
+
+                    table#hide(hidden)
+                        form(method='post' action='/view')
+                            input(type='text' value=info['_id'] name='_id' hidden)
+                            tr
+                                th(colspan='2' style='text-align: center')
+                                    input(style='text-align: center; width: 110px' type='text' placeholder='案件' name='project' value=info['project'])
+                                    span='-'
+                                    input(style='text-align: center; width: 40px' type='text' placeholder='番号' name='key' value=info['key'].replace(info['project']+'-', ""))
+                                    button(style='float: right') 検査
+                            tr
+                                th 要件
+                                td
+                                    input(type='text' name='title' value=info['title'])
+                            tr
+                                td(colspan='2')
+                                    hr
+                            tr
+                                th 分類
+                                td
+                                    select(name='classification')
+                                        if info['classification'] == '1.0 phase'
+                                            option
+                                            option(selected='selected')='1.0 phase'
+                                            option='1.5 phase'
+                                        else if info['classification'] == '1.5 phase'
+                                            option
+                                            option='1.0 phase'
+                                            option(selected='selected')='1.5 phase'
+                                        else
+                                            option
+                                            option='1.0 phase'
+                                            option='1.5 phase'
+                            tr
+                                td(colspan='2')
+                                    hr
+                            tr
+                                th 状態
+                                td
+                                    select(name='status')
+                                        if info['status'] == "対応中"
+                                            option="未対応"
+                                            option(selected='selected')="対応中"
+                                            option="対応完成"
+                                            option="確認中"
+                                        else if info['status'] == "対応完成"
+                                            option="未対応"
+                                            option="対応中"
+                                            option(selected='selected')="対応完成"
+                                            option="確認中"
+                                        else if info['status'] == "確認中"
+                                            option="未対応"
+                                            option="対応中"
+                                            option="対応完成"
+                                            option(selected='selected')="確認中"
+                                        else
+                                            option="未対応"
+                                            option="対応中"
+                                            option="対応完成"
+                                            option="確認中"
+                            tr
+                                td(colspan='2')
+                                    hr
+                            tr
+                                th 種別
+                                td
+                                    select(name='species')
+                                        if info['species'] == "仕様"
+                                            option='バグ'
+                                            option(selected='selected')='仕様'
+                                            option='仕様変更'
+                                            option='機能追加'
+                                        else if info['species'] == "仕様変更"
+                                            option='バグ'
+                                            option='仕様'
+                                            option(selected='selected')='仕様変更'
+                                            option='機能追加'
+                                        else if info['species'] == "機能追加"
+                                            option='バグ'
+                                            option='仕様'
+                                            option='仕様変更'
+                                            option(selected='selected')='機能追加'
+                                        else
+                                            option='バグ'
+                                            option='仕様'
+                                            option='仕様変更'
+                                            option='機能追加'
+                            tr
+                                td(colspan='2')
+                                    hr
+                            tr
+                                th 提出者
+                                td
+                                    input(type='text' name='submitter' value=info['submitter'])
+                            tr
+                                td(colspan='2')
+                                    hr
+                            tr
+                                th 詳細
+                                td
+                                    input(type='text' name='detail' value=info['detail'])
+                            tr
+                                td(colspan='2')
+                                    hr
+                            tr
+                                th 担当者
+                                td
+                                    input(type='text' name='principal' value=info['principal'])
+                            tr
+                                td(colspan='2')
+                                    hr
+                            tr
+                                th 備考
+                                td
+                                    input(type='text' name='remark' value=info['remark'])
+                            tr
+                                td(colspan='2')
+                                    hr
+                            tr
+                                td
+                                    button クリア
+                                td
+                                    span(style='float: right')
+                                        input(type='submit' value='確認')
+                                        a(href='/view')
+                                            button(type='button') 戻る
+                else if msg
+                    table#show(style='width: 25%')
+                        tr
+                            th(colspan='2' style='text-align: center')
+                                input#project(style='text-align: center; width: 110px' type='text' placeholder='案件' name='project' value=msg['project'])
+                                span='-'
+                                input#key(style='text-align: center; width: 40px' type='text' placeholder='番号' name='key' value=msg['key'].replace(msg['project']+'-', ""))
+                                button#check(style='float: right' type='button') 検査
+                        tr
+                            td(style='text-align: center; color: red; font-size: 13px' colspan='2') #{msg.message1}
+                        tr
+                            td(style='text-align: center; color: red; font-size: 13px' colspan='2') #{msg.message2}
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 要件
+                            td
+                                input(type='text' name='title' value=msg['title'])
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 分類
+                            td
+                                select(name='classification')
+                                    if msg['classification'] == '1.0 phase'
+                                        option
+                                        option(selected='selected')='1.0 phase'
+                                        option='1.5 phase'
+                                    else if msg['classification'] == '1.5 phase'
+                                        option
+                                        option='1.0 phase'
+                                        option(selected='selected')='1.5 phase'
+                                    else
+                                        option
+                                        option='1.0 phase'
+                                        option='1.5 phase'
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 状態
+                            td
+                                select(name='status')
+                                    if msg['status'] == "対応中"
+                                        option="未対応"
+                                        option(selected='selected')="対応中"
+                                        option="対応完成"
+                                        option="確認中"
+                                    else if msg['status'] == "対応完成"
+                                        option="未対応"
+                                        option="対応中"
+                                        option(selected='selected')="対応完成"
+                                        option="確認中"
+                                    else if msg['status'] == "確認中"
+                                        option="未対応"
+                                        option="対応中"
+                                        option="対応完成"
+                                        option(selected='selected')="確認中"
+                                    else
+                                        option="未対応"
+                                        option="対応中"
+                                        option="対応完成"
+                                        option="確認中"
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 種別
+                            td
+                                select(name='species')
+                                    if msg['species'] == "仕様"
+                                        option='バグ'
+                                        option(selected='selected')='仕様'
+                                        option='仕様変更'
+                                        option='機能追加'
+                                    else if msg['species'] == "仕様変更"
+                                        option='バグ'
+                                        option='仕様'
+                                        option(selected='selected')='仕様変更'
+                                        option='機能追加'
+                                    else if msg['species'] == "機能追加"
+                                        option='バグ'
+                                        option='仕様'
+                                        option='仕様変更'
+                                        option(selected='selected')='機能追加'
+                                    else
+                                        option='バグ'
+                                        option='仕様'
+                                        option='仕様変更'
+                                        option='機能追加'
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 提出者
+                            td
+                                input(type='text' name='submitter' value=msg['submitter'])
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 詳細
+                            td
+                                input(type='text' name='detail' value=msg['detail'])
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 担当者
+                            td
+                                input(type='text' name='principal' value=msg['principal'])
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            th 備考
+                            td
+                                input(type='text' name='remark' value=msg['remark'])
+                        tr
+                            td(colspan='2')
+                                hr
+                        tr
+                            td
+                                button クリア
+                            td
+                                span(style='float: right')
+                                    input(type='submit' value='確認')
+                                    a(href='/view')
+                                        button(type='button') 戻る

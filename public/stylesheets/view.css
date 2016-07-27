@@ -1,0 +1,23 @@
+button{
+    float: right;
+    font-size: 10px;
+    width: 6%;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #000000;
+}
+
+td {
+    text-align: center;
+}
+
+.box{
+    width: 98%;
+    margin-left: 1%;
+}

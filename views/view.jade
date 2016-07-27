@@ -1,0 +1,74 @@
+//
+   Created by mamol on 16/07/26.
+doctype
+html
+    head
+        title 要件一覧
+        meta(charset='UTF-8')
+        script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+        link(rel='stylesheet' type='text/css' href='/stylesheets/view.css')
+        script(type='text/javascript' src='/javascripts/view.js')
+
+    body
+        div.box
+            div.new
+                a(href='/management')
+                    button(style='font-size: small' type='button') 新規
+                a(href='/view')
+                    button(style='font-size: small' type='button') 一覧
+
+            div.search
+                form(method='get')
+                    select#condition(name='condition')
+                        option(value='key')='キー'
+                        option(value='title')='要件'
+                        option(value='classification')='分類'
+                        option(value='status')='状態'
+                        option(value='species')='種別'
+                        option(value='submitter')='提出者'
+                        option(value='principal')='担当者'
+                    input#value(type='text' name='value')
+                    input(type='submit' value='検索')
+
+            div.table
+                table(style='width: 100%')
+                    tr
+                        th(style='width: 10%')=''
+                        th(style='width: 36%')='要件'
+                        th(style='width: 10%')='分類'
+                        th(style='width: 8%')='状態'
+                        th(style='width: 8%')='種別'
+                        th(style='width: 14%')='提出者'
+                        th(style='width: 14%')='担当者'
+                    if list
+                        -var count = 0
+                        each info in list
+                            -count += 1
+                            tr
+                                td
+                                    a(id='key'+count href='javascript:;')=info.key
+                                td
+                                    span #{info.title}
+                                td
+                                    span #{info.classification}
+                                    button.classification(value=info['classification'])='!'
+                                td
+                                    span #{info.status}
+                                    button.status(value=info['status'])='!'
+                                td
+                                    span #{info.species}
+                                    button.species(value=info['species'])='!'
+                                td
+                                    span #{info.submitter}
+                                    button.submitter(value=info['submitter'])='!'
+                                td
+                                    span #{info.principal}
+                                    button.principal(value=info['principal'])='!'
+                        div(hidden)
+                            form(method='get')
+                                input#key_text(type='text' name='key')
+                                input#key_submit(type='submit')
+        form(method='get')
+            input#check_condition(type='text' name='condition' hidden)
+            input#check_value(type='text' name='value' hidden)
+            input#check_submit(type='submit' hidden)
