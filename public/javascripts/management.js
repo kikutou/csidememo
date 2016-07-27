@@ -3,7 +3,8 @@
  */
 $(function () {
     $("#clear").click(function () {
-        $("input").val("")
+        $("input").val("");
+        $("textarea").val("")
     });
 
     // $("#check").click(function () {

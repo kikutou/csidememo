@@ -117,7 +117,7 @@ html
                             tr
                                 th 詳細
                                 td
-                                    input(type='text' name='detail' value=msg['detail'])
+                                    textarea(name='detail')=msg['detail']
                             tr
                                 td(colspan='2')
                                     hr
@@ -131,7 +131,7 @@ html
                             tr
                                 th 備考
                                 td
-                                    input(type='text' name='remark' value=msg['remark'])
+                                    textarea(name='remark')=msg['remark']
                             tr
                                 td(colspan='2')
                                     hr
@@ -194,7 +194,7 @@ html
                             tr
                                 th 詳細
                                 td
-                                    input(type='text' name='detail')
+                                    textarea(name='detail')
                             tr
                                 td(colspan='2')
                                     hr
@@ -208,7 +208,7 @@ html
                             tr
                                 th 備考
                                 td
-                                    input(type='text' name='remark')
+                                    textarea(name='remark')
                             tr
                                 td(colspan='2')
                                     hr

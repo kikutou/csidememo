@@ -18,10 +18,60 @@ router.get('/', function (req, res) {
             throw err
         }else {
             var search = req.query;
-            console.log(search);
-            var col_demands = db.collection('demands');
 
-            if (search.condition && search.value){
+            for (var k in search){
+                if (search[k] == ""){
+                    delete search[k]
+                }
+            }
+
+            var col_demands = db.collection('demands');
+            
+            if (search.search){
+                delete search.search;
+                var search_info = search;
+
+                if (search['project'] && search['code']){
+                    search['key'] = search['project'] +'-'+ search['code'];
+                    delete search.code;
+
+                    console.log(search);
+
+                    col_demands.find(search).toArray(function (err, doc) {
+                        if (err){
+                            throw err
+                        }else {
+
+                            res.render('view', {list: doc, search_info: search_info})
+                        }
+                    })
+                }else if (!search['project'] && search['code']){
+
+                    console.log(search);
+                    var str = search.code;
+                    delete search.code;
+
+                    col_demands.find({$and: [{key: {$regex: str}}, search]}).toArray(function (err, doc) {
+                        if (err){
+                            throw err
+                        }else {
+                            res.render('view', {list: doc, search_info: search_info})
+                        }
+                    })
+                }else {
+
+                    console.log(search);
+
+                    col_demands.find(search).toArray(function (err, doc) {
+                        if (err){
+                            throw err
+                        }else {
+                            res.render('view', {list: doc, search_info: search_info})
+                        }
+                    })
+                }
+
+            }else if (search.condition && search.value){
 
                 var condition = search.condition;
                 var value = search.value;
@@ -41,13 +91,21 @@ router.get('/', function (req, res) {
                         }
                     }
                 })
-            }else if (search.key){
-                col_demands.findOne({key: search.key}, function (err, doc) {
+            }else if (search.view_key){
+                col_demands.findOne({key: search.view_key}, function (err, doc) {
                     if (err){
                         throw err
                     }else{
                         console.log(doc);
                         res.render('modify', {info: doc})
+                    }
+                })
+            }else if (search.del_key){
+                col_demands.remove({'key': search.del_key}, function (err, doc) {
+                    if (err){
+                        throw err
+                    }else {
+                        res.redirect('/view')
                     }
                 })
             }else {
@@ -94,27 +152,43 @@ router.post('/', function (req, res) {
                                     console.log('Demand already exist!');
                                     modify['message1'] = 'このキーはもう存在しています、';
                                     modify['message2'] = '詳しい内容を一覧ページに戻って、検索してください';
-                                    res.render('management', {msg: modify})
+                                    res.render('modify', {msg: modify})
+                                }else {
+                                    col_demands.update(
+                                        {_id: modify['_id']},
+                                        {$set: modify},
+                                        {
+                                            upsert: true
+                                        },
+                                        function (err, doc) {
+                                            if (err){
+                                                throw err
+                                            }else {
+                                                res.redirect('/view')
+                                            }
+                                        }
+                                    )
                                 }
                             }
                         })
-                    }
-                }
-            });
-            col_demands.update(
-                {_id: modify['_id']},
-                {$set: modify},
-                {
-                    upsert: true
-                },
-                function (err, doc) {
-                    if (err){
-                        throw err
                     }else {
-                        res.redirect('/view')
+                        col_demands.update(
+                            {_id: modify['_id']},
+                            {$set: modify},
+                            {
+                                upsert: true
+                            },
+                            function (err, doc) {
+                                if (err){
+                                    throw err
+                                }else {
+                                    res.redirect('/view')
+                                }
+                            }
+                        )
                     }
                 }
-            )
+            })
         }
     })
 });

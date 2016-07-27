@@ -2,7 +2,7 @@
  * Created by mamol on 16/07/27.
  */
 $(function () {
-    $("a").click(function () {
+    $(".a_key").click(function () {
         $("#key_text").val($(this).text());
         $("#key_submit").click()
     });
@@ -56,5 +56,12 @@ $(function () {
         $("#check_submit").click()
 
     });
+
+    $(".a_del").click(function () {
+
+        var key = $(this).text().replace('削除', "");
+        $("#del_key").val(key);
+        $("#del_submit").click()
+    })
 
 });

@@ -19,34 +19,93 @@ html
 
             div.search
                 form(method='get')
-                    select#condition(name='condition')
-                        option(value='key')='キー'
-                        option(value='title')='要件'
-                        option(value='classification')='分類'
-                        option(value='status')='状態'
-                        option(value='species')='種別'
-                        option(value='submitter')='提出者'
-                        option(value='principal')='担当者'
-                    input#value(type='text' name='value')
-                    input(type='submit' value='検索')
+                    table
+                        tr
+                            th='キー'
+                            td
+                                if search_info && search_info['project']
+                                    input(type='text' name='project' placeholder='案件' style='text-align: center; width: 110px' value=search_info['project'])
+                                else
+                                    input(type='text' name='project' placeholder='案件' style='text-align: center; width: 110px')
+                                span='-'
+                                if search_info && search_info['code']
+                                    input(type='text' name='code' placeholder='番号' style='text-align: center; width: 40px' value=search_info['code'])
+                                else
+                                    input(type='text' name='code' placeholder='番号' style='text-align: center; width: 40px')
+                        tr
+                            th='要件'
+                            td
+                                if search_info && search_info['title']
+                                    input(type='text' name='title' value=search_info["title"])
+                                else
+                                    input(type='text' name='title')
+                        tr
+                            th='分類'
+                            td
+                                select(name='classification')
+                                    option
+                                    option='1.0 phase'
+                                    option='1.5 phase'
+                        tr
+                            th='状態'
+                            td
+                                select(name='status')
+                                    option
+                                    option="未対応"
+                                    option="対応中"
+                                    option="対応完成"
+                                    option="確認中"
+                        tr
+                            th='種別'
+                            td
+                                select(name='species')
+                                    option
+                                    option='バグ'
+                                    option='仕様'
+                                    option='仕様変更'
+                                    option='機能追加'
+                        tr
+                            th='提出者'
+                            td
+                                if search_info && search_info['submitter']
+                                    input(type='text' name='submitter' value=search_info['submitter'])
+                                else
+                                    input(type='text' name='submitter')
+
+                        tr
+                            th='担当者'
+                            td
+                                if search_info && search_info['principal']
+                                    input(type='text' name='principal' value=search_info['principal'])
+                                else
+                                    input(type='text' name='principal')
+
+                        tr
+                            td
+                            td
+                                input(type='submit' value='検索' style='float: right' name='search')
+            br
+            hr
+            br
 
             div.table
                 table(style='width: 100%')
                     tr
                         th(style='width: 10%')=''
-                        th(style='width: 36%')='要件'
+                        th(style='width: 31%')='要件'
                         th(style='width: 10%')='分類'
                         th(style='width: 8%')='状態'
                         th(style='width: 8%')='種別'
                         th(style='width: 14%')='提出者'
                         th(style='width: 14%')='担当者'
+                        th(style='width: 5%')=''
                     if list
                         -var count = 0
                         each info in list
                             -count += 1
                             tr
                                 td
-                                    a(id='key'+count href='javascript:;')=info.key
+                                    a.a_key(id='key'+count href='javascript:;')=info.key
                                 td
                                     span #{info.title}
                                 td
@@ -64,9 +123,18 @@ html
                                 td
                                     span #{info.principal}
                                     button.principal(value=info['principal'])='!'
+                                td
+                                    a.a_del(id='delete'+count href='javascript:;')='削除'
+                                        span(hidden)=info.key
+                                    div(hidden)
+                                        form(method='get')
+                                            input#del_key(type='text' name='del_key')
+                                            input#del_submit(type='submit' onclick="return confirm('このデータが削除しますか');")
+
+
                         div(hidden)
                             form(method='get')
-                                input#key_text(type='text' name='key')
+                                input#key_text(type='text' name='view_key')
                                 input#key_submit(type='submit')
         form(method='get')
             input#check_condition(type='text' name='condition' hidden)
