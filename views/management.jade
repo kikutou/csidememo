@@ -20,9 +20,9 @@ html
                                     span='-'
                                     input#key(style='text-align: center; width: 40px' type='text' placeholder='番号' name='key' value=msg['key'].replace(msg['project']+'-', ""))
                                     button#check(style='float: right' type='button') 検査
-                            tr
-                                td(style='text-align: center; color: red; font-size: 13px' colspan='2') #{msg.message1}
-                            tr
+                            tr#msg1
+                                td#result(style='text-align: center; color: red; font-size: 13px' colspan='2') #{msg.message1}
+                            tr#msg2
                                 td(style='text-align: center; color: red; font-size: 13px' colspan='2') #{msg.message2}
                             tr
                                 td(colspan='2')
@@ -142,6 +142,8 @@ html
                                     span='-'
                                     input#key(style='text-align: center; width: 40px' type='text' placeholder='番号' name='key')
                                     button#check(style='float: right' type='button') 検査
+                            tr#msg1(hidden)
+                                td#result(colspan='2' style='text-align: center')
                             tr
                                 td(colspan='2')
                                     hr

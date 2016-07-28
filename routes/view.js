@@ -26,6 +26,17 @@ router.get('/', function (req, res) {
             }
 
             var col_demands = db.collection('demands');
+            var summation = 0;
+
+            col_demands.find({}).toArray(function (err, item) {
+                if (err){
+                    throw err
+                }else {
+                    item.forEach(function () {
+                        summation += 1
+                    })
+                }
+            });
             
             if (search.search){
                 delete search.search;
@@ -44,7 +55,7 @@ router.get('/', function (req, res) {
                             throw err
                         }else {
                             search_info['code'] = str;
-                            res.render('view', {list: doc, search_info: search_info})
+                            res.render('view', {list: doc, search_info: search_info, summation: summation})
                         }
                     })
                 }else if (!search['project'] && search['code']){
@@ -62,7 +73,7 @@ router.get('/', function (req, res) {
                         }else {
                             search_info['code'] = str;
 
-                            res.render('view', {list: doc, search_info: search_info})
+                            res.render('view', {list: doc, search_info: search_info, summation: summation})
                         }
                     })
                 }else {
@@ -73,7 +84,7 @@ router.get('/', function (req, res) {
                         if (err){
                             throw err
                         }else {
-                            res.render('view', {list: doc, search_info: search_info})
+                            res.render('view', {list: doc, search_info: search_info, summation: summation})
                         }
                     })
                 }
@@ -92,9 +103,9 @@ router.get('/', function (req, res) {
                         throw err
                     }else {
                         if (doc.length == 0){
-                            res.render('view')
+                            res.render('view', {summation: summation})
                         }else {
-                            res.render('view', {list: doc})
+                            res.render('view', {list: doc, summation: summation})
                         }
                     }
                 })
@@ -123,7 +134,7 @@ router.get('/', function (req, res) {
                         if (doc.length == 0){
                             res.render('view')
                         }else {
-                            res.render('view', {list: doc})
+                            res.render('view', {list: doc, summation: summation})
                         }
                     }
                 })

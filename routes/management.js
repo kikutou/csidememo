@@ -8,40 +8,44 @@ var router = express.Router();
 
 
 router.get('/', function (req, res) {
-    // var check = req.query;
-    //
-    // if (check){
-    //     var mongodb = require('mongodb');
-    //     var server = new mongodb.Server('localhost', 27017);
-    //     var db = mongodb.Db('projectManage', server, {safe: true});
-    //
-    //     db.open(function (err, db) {
-    //         if (err){
-    //             throw err
-    //         }else {
-    //             var col_demands = db.collection('demands');
-    //
-    //             col_demands.find({'key:': check['key']}).toArray(function (err, doc) {
-    //                 if (err){
-    //                     throw err
-    //                 }else {
-    //                     var result = "";
-    //                     console.log(doc);
-    //                     if (doc.length == 0){
-    //                         result = 'このキーは使用することができます';
-    //                     }else {
-    //                         result = 'このキーはもう存在しています';
-    //                     }
-    //                     console.log(result);
-    //                     return result
-    //                 }
-    //             })
-    //         }
-    //     })
-    // }else {
-    //     res.render('management')
-    // }
-    res.render('management')
+    var check = req.query;
+    
+    if (check['project'] && check['code']){
+
+        console.log(check['project']);
+        console.log(check['code']);
+
+        var mongodb = require('mongodb');
+        var server = new mongodb.Server('localhost', 27017);
+        var db = mongodb.Db('projectManage', server, {safe: true});
+    
+        db.open(function (err, db) {
+            if (err){
+                throw err
+            }else {
+                var col_demands = db.collection('demands');
+                var result = "";
+
+                var key = check['project'] +"-"+ check['code'];
+
+                col_demands.find({'key': key}).toArray(function (err, doc) {
+                    if (err){
+                        throw err
+                    }else {
+                        console.log(doc);
+                        if (doc.length == 0){
+                            result = true;
+                        }else {
+                            result = false;
+                        }
+                        res.send(result)
+                    }
+                })
+            }
+        })
+    }else {
+        res.render('management')
+    }
 });
 
 router.post('/', function (req, res) {

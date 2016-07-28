@@ -11,13 +11,7 @@ html
 
     body
         div.box
-            div.new
-                a(href='/management')
-                    button(style='font-size: small' type='button') 新規
-                a(href='/view')
-                    button(style='font-size: small' type='button') 一覧
-
-            div.search
+            div(align='center' style='margin-top: 2%').search
                 form(method='get')
                     table
                         tr
@@ -150,11 +144,27 @@ html
                                     input(type='text' name='principal')
 
                         tr
-                            td.search_th
-                                button#clear(type='button' style='width: 60%; height: 30px') クリア
-                            td
+                            td(style='border: 0px').search_th
+                            td(style='border: 0px')
                                 button(type='submit' value='検索' style='float: right; width: 30%; height: 30px; font-size: small' name='search') 検索
-            br
+                                button#clear(type='button' style='width: 30%; height: 30px; font-size: small') クリア
+            div.new
+                a(href='/management')
+                    button(style='font-size: small' type='button') 新規
+                a(href='/view')
+                    button(style='font-size: small' type='button') 全部一覧
+
+            div.counts
+                if list
+                    -var count = 0
+                    each info in list
+                        -count += 1
+                    spanspan='現在表示: '+ count +'件/総和: '
+                else
+                    span='現在表示: 0件/総和: '
+                span=summation
+                span='件'
+
             hr
             br
 
