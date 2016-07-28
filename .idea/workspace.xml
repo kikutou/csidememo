@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45d7fde0-e4d7-43ad-81f7-6fc5b0076f32" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/projectManage.iml" afterPath="$PROJECT_DIR$/.idea/projectManage.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/management.js" afterPath="$PROJECT_DIR$/public/javascripts/management.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/view.css" afterPath="$PROJECT_DIR$/public/stylesheets/view.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/management.js" afterPath="$PROJECT_DIR$/routes/management.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/modify.js" afterPath="$PROJECT_DIR$/public/javascripts/modify.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/view.js" afterPath="$PROJECT_DIR$/routes/view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/management.jade" afterPath="$PROJECT_DIR$/views/management.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/view.jade" afterPath="$PROJECT_DIR$/views/view.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/modify.jade" afterPath="$PROJECT_DIR$/views/modify.jade" />
     </list>
     <ignored path="projectManage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,21 +25,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="view.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/view.jade">
+      <file leaf-file-name="view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2736">
-              <caret line="152" column="43" selection-start-line="152" selection-start-column="43" selection-end-line="152" selection-end-column="43" />
+            <state relative-caret-position="155">
+              <caret line="179" column="39" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#40#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modify.jade" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/modify.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="79" column="94" selection-start-line="79" selection-start-column="94" selection-end-line="79" selection-end-column="94" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="management.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/management.js">
+      <file leaf-file-name="modify.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/modify.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+            <state relative-caret-position="407">
+              <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
               </folding>
@@ -55,21 +62,11 @@
       <file leaf-file-name="management.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/management.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+            <state relative-caret-position="119">
+              <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="management.jade" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/management.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="140" column="56" selection-start-line="140" selection-start-column="56" selection-end-line="140" selection-end-column="56" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -96,15 +93,15 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/public/stylesheets/management.css" />
-        <option value="$PROJECT_DIR$/public/javascripts/modify.js" />
-        <option value="$PROJECT_DIR$/views/modify.jade" />
         <option value="$PROJECT_DIR$/public/javascripts/view.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/view.css" />
         <option value="$PROJECT_DIR$/views/view.jade" />
-        <option value="$PROJECT_DIR$/routes/view.js" />
         <option value="$PROJECT_DIR$/routes/management.js" />
         <option value="$PROJECT_DIR$/public/javascripts/management.js" />
         <option value="$PROJECT_DIR$/views/management.jade" />
+        <option value="$PROJECT_DIR$/public/javascripts/modify.js" />
+        <option value="$PROJECT_DIR$/routes/view.js" />
+        <option value="$PROJECT_DIR$/views/modify.jade" />
       </list>
     </option>
   </component>
@@ -317,12 +314,12 @@
       <updated>1469519717443</updated>
       <workItem from="1469519719390" duration="1801000" />
       <workItem from="1469524389435" duration="57025000" />
-      <workItem from="1469701910167" duration="7217000" />
+      <workItem from="1469701910167" duration="11642000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66043000" />
+    <option name="totallyTimeSpent" value="70468000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1505" y="-4" width="1535" height="904" extended-state="6" />
@@ -552,16 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/modify.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/view.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -578,16 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/view.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
@@ -595,14 +572,6 @@
           <folding>
             <element signature="e#0#40#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/modify.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="84" column="82" selection-start-line="84" selection-start-column="82" selection-end-line="84" selection-end-column="82" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -616,18 +585,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/management.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/management.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+        <state relative-caret-position="468">
+          <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
           </folding>
@@ -636,8 +595,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/management.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="140" column="56" selection-start-line="140" selection-start-column="56" selection-end-line="140" selection-end-column="56" />
+        <state relative-caret-position="360">
+          <caret line="23" column="41" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/management.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/modify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="927" column="0" selection-start-line="927" selection-start-column="0" selection-end-line="927" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="179" column="39" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/modify.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="79" column="94" selection-start-line="79" selection-start-column="94" selection-end-line="79" selection-end-column="94" />
           <folding />
         </state>
       </provider>

@@ -80,10 +80,12 @@ html
                             input.hidden_input(type='text' value=info['_id'] name='_id' hidden)
                             tr
                                 th(colspan='2' style='text-align: center')
-                                    input(style='text-align: center; width: 110px' type='text' placeholder='案件' name='project' value=info['project'])
+                                    input#project(style='text-align: center; width: 110px' type='text' placeholder='案件' name='project' value=info['project'])
                                     span='-'
-                                    input(style='text-align: center; width: 40px' type='text' placeholder='番号' name='key' value=info['key'].replace(info['project']+'-', ""))
-                                    button(style='float: right' type='button') 検査
+                                    input#code(style='text-align: center; width: 40px' type='text' placeholder='番号' name='key' value=info['key'].replace(info['project']+'-', ""))
+                                    button#check(style='float: right' type='button') 検査
+                            tr#msg1(hidden)
+                                td#result(style='text-align: center' colspan='2')
                             tr
                                 th 要件
                                 td
@@ -201,18 +203,19 @@ html
                                         a(href='/view')
                                             button(type='button') 戻る
                 else if msg
-                    table#show(style='width: 25%')
-                        input.hidden_input(type='text' value=msg['_id'] name='_id' hidden)
+                    table#show
+
                         form(method='post' action='/view')
+                            input.hidden_input(type='text' value=msg['_id'] name='_id' hidden)
                             tr
                                 th(colspan='2' style='text-align: center')
                                     input#project(style='text-align: center; width: 110px' type='text' placeholder='案件' name='project' value=msg['project'])
                                     span='-'
-                                    input#key(style='text-align: center; width: 40px' type='text' placeholder='番号' name='key' value=msg['key'].replace(msg['project']+'-', ""))
+                                    input#code(style='text-align: center; width: 40px' type='text' placeholder='番号' name='key' value=msg['key'].replace(msg['project']+'-', ""))
                                     button#check(style='float: right' type='button') 検査
-                            tr
-                                td(style='text-align: center; color: red; font-size: 13px' colspan='2') #{msg.message1}
-                            tr
+                            tr#msg1
+                                td#result(style='text-align: center; color: red; font-size: 13px' colspan='2') #{msg.message1}
+                            tr#msg2
                                 td(style='text-align: center; color: red; font-size: 13px' colspan='2') #{msg.message2}
                             tr
                                 td(colspan='2')
