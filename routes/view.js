@@ -30,9 +30,11 @@ router.get('/', function (req, res) {
             if (search.search){
                 delete search.search;
                 var search_info = search;
+                var str = "";
 
                 if (search['project'] && search['code']){
                     search['key'] = search['project'] +'-'+ search['code'];
+                    str = search.code;
                     delete search.code;
 
                     console.log(search);
@@ -41,20 +43,25 @@ router.get('/', function (req, res) {
                         if (err){
                             throw err
                         }else {
-
+                            search_info['code'] = str;
                             res.render('view', {list: doc, search_info: search_info})
                         }
                     })
                 }else if (!search['project'] && search['code']){
 
                     console.log(search);
-                    var str = search.code;
+
+                    str = search.code;
+
                     delete search.code;
+
 
                     col_demands.find({$and: [{key: {$regex: str}}, search]}).toArray(function (err, doc) {
                         if (err){
                             throw err
                         }else {
+                            search_info['code'] = str;
+
                             res.render('view', {list: doc, search_info: search_info})
                         }
                     })

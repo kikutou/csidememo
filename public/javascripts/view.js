@@ -62,6 +62,11 @@ $(function () {
         var key = $(this).text().replace('削除', "");
         $("#del_key").val(key);
         $("#del_submit").click()
+    });
+
+    $("#clear").click(function () {
+        $("input").val("");
+        $(".option").attr("selected", true)
     })
 
 });

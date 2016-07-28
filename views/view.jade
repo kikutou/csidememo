@@ -21,7 +21,7 @@ html
                 form(method='get')
                     table
                         tr
-                            th='キー'
+                            th.search_th='キー'
                             td
                                 if search_info && search_info['project']
                                     input(type='text' name='project' placeholder='案件' style='text-align: center; width: 110px' value=search_info['project'])
@@ -33,39 +33,108 @@ html
                                 else
                                     input(type='text' name='code' placeholder='番号' style='text-align: center; width: 40px')
                         tr
-                            th='要件'
+                            th.search_th='要件'
                             td
                                 if search_info && search_info['title']
                                     input(type='text' name='title' value=search_info["title"])
                                 else
                                     input(type='text' name='title')
                         tr
-                            th='分類'
+                            th.search_th='分類'
                             td
-                                select(name='classification')
-                                    option
-                                    option='1.0 phase'
-                                    option='1.5 phase'
+                                if search_info && search_info['classification'] && search_info['classification'] == '1.0 phase'
+                                    select(name='classification')
+                                        option.option
+                                        option(selected='selected')='1.0 phase'
+                                        option='1.5 phase'
+                                else if search_info && search_info['classification'] && search_info['classification'] == '1.5 phase'
+                                    select(name='classification')
+                                        option.option
+                                        option='1.0 phase'
+                                        option(selected='selected')='1.5 phase'
+                                else
+                                    select(name='classification')
+                                        option.option
+                                        option='1.0 phase'
+                                        option='1.5 phase'
                         tr
-                            th='状態'
+                            th.search_th='状態'
                             td
-                                select(name='status')
-                                    option
-                                    option="未対応"
-                                    option="対応中"
-                                    option="対応完成"
-                                    option="確認中"
+                                if search_info && search_info['status'] && search_info['status'] == "未対応"
+                                    select(name='status')
+                                        option.option
+                                        option(selected='selected')="未対応"
+                                        option="対応中"
+                                        option="対応完成"
+                                        option="確認中"
+                                else if search_info && search_info['status'] && search_info['status'] == "対応中"
+                                    select(name='status')
+                                        option.option
+                                        option="未対応"
+                                        option(selected='selected')="対応中"
+                                        option="対応完成"
+                                        option="確認中"
+                                else if search_info && search_info['status'] && search_info['status'] == "対応完成"
+                                    select(name='status')
+                                        option.option
+                                        option="未対応"
+                                        option="対応中"
+                                        option(selected='selected')="対応完成"
+                                        option="確認中"
+                                else if search_info && search_info['status'] && search_info['status'] == "確認中"
+                                    select(name='status')
+                                        option.option
+                                        option="未対応"
+                                        option="対応中"
+                                        option="対応完成"
+                                        option(selected='selected')="確認中"
+                                else
+                                    select(name='status')
+                                        option.option
+                                        option="未対応"
+                                        option="対応中"
+                                        option="対応完成"
+                                        option="確認中"
                         tr
-                            th='種別'
+                            th.search_th='種別'
                             td
-                                select(name='species')
-                                    option
-                                    option='バグ'
-                                    option='仕様'
-                                    option='仕様変更'
-                                    option='機能追加'
+                                if search_info && search_info['species'] && search_info['species'] == "バグ"
+                                    select(name='species')
+                                        option.option
+                                        option(selected='selected')='バグ'
+                                        option='仕様'
+                                        option='仕様変更'
+                                        option='機能追加'
+                                else if search_info && search_info['species'] && search_info['species'] == "仕様"
+                                    select(name='species')
+                                        option.option
+                                        option='バグ'
+                                        option(selected='selected')='仕様'
+                                        option='仕様変更'
+                                        option='機能追加'
+                                else if search_info && search_info['species'] && search_info['species'] == "仕様変更"
+                                    select(name='species')
+                                        option.option
+                                        option='バグ'
+                                        option='仕様'
+                                        option(selected='selected')='仕様変更'
+                                        option='機能追加'
+                                else if search_info && search_info['species'] && search_info['species'] == "機能追加"
+                                    select(name='species')
+                                        option.option
+                                        option='バグ'
+                                        option='仕様'
+                                        option='仕様変更'
+                                        option(selected='selected')='機能追加'
+                                else
+                                    select(name='species')
+                                        option.option
+                                        option='バグ'
+                                        option='仕様'
+                                        option='仕様変更'
+                                        option='機能追加'
                         tr
-                            th='提出者'
+                            th.search_th='提出者'
                             td
                                 if search_info && search_info['submitter']
                                     input(type='text' name='submitter' value=search_info['submitter'])
@@ -73,7 +142,7 @@ html
                                     input(type='text' name='submitter')
 
                         tr
-                            th='担当者'
+                            th.search_th='担当者'
                             td
                                 if search_info && search_info['principal']
                                     input(type='text' name='principal' value=search_info['principal'])
@@ -81,9 +150,10 @@ html
                                     input(type='text' name='principal')
 
                         tr
+                            td.search_th
+                                button#clear(type='button' style='width: 60%; height: 30px') クリア
                             td
-                            td
-                                input(type='submit' value='検索' style='float: right' name='search')
+                                button(type='submit' value='検索' style='float: right; width: 30%; height: 30px; font-size: small' name='search') 検索
             br
             hr
             br
