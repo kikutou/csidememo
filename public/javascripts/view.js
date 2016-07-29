@@ -66,7 +66,8 @@ $(function () {
 
     $("#clear").click(function () {
         $("input").val("");
-        $(".option").attr("selected", true)
+        // $(".option").attr("selected", true)
+        $("select").val("")
     })
 
 });
